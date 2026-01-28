@@ -3,7 +3,7 @@ import { ScrollReveal } from './ui/ScrollReveal';
 
 export default function Hero() {
   return (
-    <Section className="flex items-center">
+    <Section className="flex items-center pt-24 sm:pt-32">
       <Container className="text-center">
         <ScrollReveal>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight max-w-5xl mx-auto">
