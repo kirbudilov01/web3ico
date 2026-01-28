@@ -52,9 +52,8 @@ export default function Footer() {
               >
                 <Twitter size={18} className="text-neutral-500 hover:!text-accent" />
               </a>
-{/* TODO: Replace with actual Telegram channel URL */}
               <a
-                href="https://t.me/your_channel"
+                href="https://t.me/fabricbotbot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-dark"
