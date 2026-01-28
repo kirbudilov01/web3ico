@@ -116,17 +116,11 @@ export default function FutureToken() {
             <Sparkles className="w-4 h-4 text-green-600" />
             <span className="text-sm font-semibold text-green-600">LIVE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-dark">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
             Prelaunch Program
           </h2>
           <p className="text-base sm:text-lg text-neutral-500 max-w-3xl mx-auto mb-4 leading-relaxed">
-            We're launching the Prelaunch now — early supporters receive a status badge, token allocation, and ecosystem gifts from partners.
-          </p>
-          <p className="text-base sm:text-lg text-neutral-500 max-w-3xl mx-auto mb-4 leading-relaxed">
-            Prelaunch is a crowdfunding inside FABRICBOT: you contribute in TON, unlock your status, and receive bonuses as the ecosystem grows.
-          </p>
-          <p className="text-base sm:text-lg text-neutral-500 max-w-2xl mx-auto mb-3">
-            Built on TON. Growing with Telegram + TON community.
+            We're launching the Prelaunch now — early supporters receive a status badge, token allocation, and ecosystem gifts from partners. Prelaunch is a crowdfunding inside FABRICBOT: you contribute in TON, unlock your status, and receive bonuses as the ecosystem grows. Built on TON. Growing with Telegram + TON community.
           </p>
           <a
             href="https://ton.org/community"
@@ -223,7 +217,7 @@ export default function FutureToken() {
         {/* C) Combined CTA Block */}
         <div className="bg-white rounded-2xl p-8 sm:p-12 border border-neutral-100 mb-16 shadow-sm">
           <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-dark">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
               Prelaunch → Allocation → ICO
             </h3>
             <p className="text-base sm:text-lg text-neutral-500 leading-relaxed mb-8">
