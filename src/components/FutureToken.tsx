@@ -146,7 +146,7 @@ export default function FutureToken() {
         </div>
 
         {/* B) Status Tiers - First Row (3 cards) */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {tiers.slice(0, 3).map((tier, index) => (
             <div
               key={index}
@@ -183,7 +183,7 @@ export default function FutureToken() {
 
         {/* Second Row (2 cards centered) */}
         <div className="flex justify-center mb-16">
-          <div className="grid sm:grid-cols-2 gap-6 w-full lg:w-2/3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full lg:w-2/3">
             {tiers.slice(3, 5).map((tier, index) => (
               <div
                 key={index}

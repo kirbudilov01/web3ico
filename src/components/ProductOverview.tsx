@@ -33,7 +33,7 @@ export default function ProductOverview() {
           subtitle="FABRICBOT ECOSYSTEM turns Telegram into a full commerce stack — not a set of disconnected tools. Whether you're a seller, freelancer, creator, agency, or a SaaS team, you can launch a Telegram-native shop, accept payments in 2 taps, and scale with referrals + automated payouts — all inside one Mini App."
         />
 
-        <div className="grid sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {layers.map((layer, index) => {
             const Icon = layer.icon;
             return (
