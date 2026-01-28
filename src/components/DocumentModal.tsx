@@ -10,8 +10,6 @@ interface Props {
 export default function DocumentModal({ document, onClose }: Props) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  console.log('DocumentModal rendered', document);
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -25,15 +23,15 @@ export default function DocumentModal({ document, onClose }: Props) {
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    document.addEventListener('mousedown', handleClickOutside);
+    window.document.addEventListener('keydown', handleEscape);
+    window.document.addEventListener('mousedown', handleClickOutside);
 
-    const previouslyFocused = document.activeElement as HTMLElement;
+    const previouslyFocused = window.document.activeElement as HTMLElement;
     modalRef.current?.focus();
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('mousedown', handleClickOutside);
+      window.document.removeEventListener('keydown', handleEscape);
+      window.document.removeEventListener('mousedown', handleClickOutside);
       previouslyFocused?.focus();
     };
   }, [onClose]);
@@ -42,9 +40,7 @@ export default function DocumentModal({ document, onClose }: Props) {
     const link = window.document.createElement('a');
     link.href = document.downloadUrl;
     link.download = `${document.title}.pdf`;
-    window.document.body.appendChild(link);
     link.click();
-    window.document.body.removeChild(link);
   };
 
   const handleOpenInNewTab = () => {
@@ -54,45 +50,44 @@ export default function DocumentModal({ document, onClose }: Props) {
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
       tabIndex={-1}
     >
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 id="modal-title" className="text-xl font-bold text-gray-900">Document Preview</h3>
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl border border-[#0B0F1A]/10 overflow-hidden shadow-2xl">
+        <div className="flex items-center justify-between p-6 border-b border-[#0B0F1A]/10">
+          <h3 id="modal-title" className="text-xl font-bold text-[#0B0F1A]">Document Preview</h3>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
             aria-label="Close modal"
           >
-            <X size={20} className="text-gray-600" />
+            <X size={20} className="text-[#6B7280]" />
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-8 bg-gradient-to-br from-gray-50 to-white">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl shadow-lg mb-4">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#2EE59D] to-[#26cc88] rounded-2xl shadow-lg mb-4">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
             </div>
 
             <div className="flex items-center justify-center gap-3 mb-3">
-              <h4 className="text-2xl font-bold text-gray-900">{document.title}</h4>
-              <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase ${
+              <h4 className="text-2xl font-bold text-[#0B0F1A]">{document.title}</h4>
+              <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                 document.status === 'LIVE'
-                  ? 'bg-green-500 text-white'
+                  ? 'bg-[#2EE59D] text-[#0B0F1A]'
                   : 'bg-gray-200 text-gray-600'
               }`}>
                 {document.status}
               </span>
             </div>
 
-            <p className="text-gray-600 text-sm max-w-md mx-auto">
+            <p className="text-[#6B7280] text-sm max-w-md mx-auto leading-relaxed">
               {document.description}
             </p>
           </div>
@@ -100,7 +95,7 @@ export default function DocumentModal({ document, onClose }: Props) {
           <div className="space-y-3">
             <button
               onClick={handleDownload}
-              className="w-full px-6 py-4 bg-green-500 text-white rounded-xl font-bold hover:bg-green-600 transition-all flex items-center justify-center gap-3 text-lg"
+              className="w-full px-6 py-4 bg-gradient-to-r from-[#2EE59D] to-[#26cc88] text-[#0B0F1A] rounded-xl font-bold hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-3 text-lg"
             >
               <Download size={24} strokeWidth={2.5} />
               Download PDF
@@ -108,7 +103,7 @@ export default function DocumentModal({ document, onClose }: Props) {
 
             <button
               onClick={handleOpenInNewTab}
-              className="w-full px-6 py-4 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all flex items-center justify-center gap-3"
+              className="w-full px-6 py-4 bg-[#0B0F1A] text-white rounded-xl font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center justify-center gap-3"
             >
               <ExternalLink size={20} />
               Open in new tab
@@ -116,7 +111,7 @@ export default function DocumentModal({ document, onClose }: Props) {
 
             <button
               onClick={onClose}
-              className="w-full px-6 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all font-medium"
+              className="w-full px-6 py-3 text-[#6B7280] hover:text-[#0B0F1A] hover:bg-gray-100 rounded-xl transition-all duration-200 font-medium"
             >
               Cancel
             </button>

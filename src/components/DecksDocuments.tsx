@@ -54,10 +54,7 @@ export default function DecksDocuments({ onDocumentClick }: Props) {
             return (
               <ScrollReveal key={doc.id} delay={index * 100}>
                 <button
-                  onClick={() => {
-                    console.log('Document clicked:', doc);
-                    onDocumentClick(doc);
-                  }}
+                  onClick={() => onDocumentClick(doc)}
                   className="group relative flex flex-col bg-white rounded-2xl border border-dark/10 hover:border-dark/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg text-left h-full w-full"
                   style={{ padding: '32px' }}
                 >
