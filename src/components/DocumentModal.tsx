@@ -36,6 +36,10 @@ export default function DocumentModal({ document, onClose }: Props) {
     };
   }, [onClose]);
 
+  const handleOpenInNewTab = () => {
+    window.open(document.url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div
       ref={modalRef}
@@ -66,64 +70,42 @@ export default function DocumentModal({ document, onClose }: Props) {
           </button>
         </div>
 
-        <div className="flex-1 overflow-hidden bg-gray-50 flex items-center justify-center">
-          <object
-            data={`${document.url}#toolbar=0&navpanes=0&scrollbar=1`}
-            type="application/pdf"
-            className="w-full h-full min-h-[70vh]"
-            title={document.title}
-          >
-            <div className="flex flex-col items-center justify-center p-8 text-center h-[70vh]">
-              <p className="text-lg text-[#0B0F1A] mb-6">
-                PDF preview is not available in your browser.
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href={document.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[#0B0F1A] text-white rounded-full font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center gap-2"
-                >
-                  <ExternalLink size={18} />
-                  Open in new tab
-                </a>
-                <a
-                  href={document.downloadUrl}
-                  download
-                  className="px-6 py-3 bg-[#2EE59D] text-[#0B0F1A] rounded-full font-semibold hover:bg-[#26cc88] transition-all duration-200 flex items-center gap-2"
-                >
-                  <Download size={18} />
-                  Download PDF
-                </a>
+        <div className="flex-1 flex items-center justify-center p-12 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="max-w-2xl w-full text-center">
+            <div className="mb-8">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg mb-6">
+                <svg className="w-12 h-12 text-[#2EE59D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
               </div>
+              <p className="text-sm text-[#6B7280] mb-2">Ready to view</p>
+              <h4 className="text-2xl font-bold text-[#0B0F1A] mb-3">{document.title}</h4>
+              <p className="text-[#6B7280] max-w-md mx-auto">{document.description}</p>
             </div>
-          </object>
-        </div>
 
-        <div className="flex items-center justify-between p-6 border-t border-[#0B0F1A]/10 flex-shrink-0">
-          <a
-            href={document.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-transparent text-[#0B0F1A] rounded-full font-semibold transition-all duration-200 border-2 border-[#0B0F1A]/20 hover:border-[#0B0F1A] hover:bg-[#0B0F1A]/5 flex items-center gap-2"
-          >
-            <ExternalLink size={18} />
-            Open in new tab
-          </a>
-          <div className="flex items-center gap-3">
-            <a
-              href={document.downloadUrl}
-              download
-              className="px-6 py-3 bg-[#0B0F1A] text-white rounded-full font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center gap-2"
-            >
-              <Download size={18} />
-              Download
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={handleOpenInNewTab}
+                className="px-8 py-4 bg-[#0B0F1A] text-white rounded-full font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+              >
+                <ExternalLink size={20} />
+                Open in new tab
+              </button>
+              <a
+                href={document.downloadUrl}
+                download
+                className="px-8 py-4 bg-[#2EE59D] text-[#0B0F1A] rounded-full font-semibold hover:bg-[#26cc88] transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+              >
+                <Download size={20} />
+                Download PDF
+              </a>
+            </div>
+
             <button
               onClick={onClose}
-              className="px-6 py-3 bg-transparent text-[#0B0F1A] rounded-full font-semibold transition-all duration-200 border-2 border-[#0B0F1A] hover:bg-[#0B0F1A] hover:text-white"
+              className="mt-6 text-[#6B7280] hover:text-[#0B0F1A] transition-colors duration-200 font-medium"
             >
-              Close
+              Cancel
             </button>
           </div>
         </div>
