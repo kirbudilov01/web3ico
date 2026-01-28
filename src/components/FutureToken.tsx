@@ -1,5 +1,6 @@
 import { Sparkles, CheckCircle2, FileText, Calendar, Send } from 'lucide-react';
 import { Section, Container } from './ui/Layout';
+import { ScrollReveal } from './ui/ScrollReveal';
 
 export default function FutureToken() {
   const tiers = [
@@ -272,7 +273,7 @@ export default function FutureToken() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-5 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
             {roadmapYears.map((phase, index) => (
               <div
                 key={index}

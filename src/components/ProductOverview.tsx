@@ -1,5 +1,6 @@
 import { CreditCard, Settings, Users, Network } from 'lucide-react';
 import { Section, Container, SectionTitle } from './ui/Layout';
+import { ScrollReveal } from './ui/ScrollReveal';
 
 export default function ProductOverview() {
   const layers = [
@@ -37,16 +38,15 @@ export default function ProductOverview() {
           {layers.map((layer, index) => {
             const Icon = layer.icon;
             return (
-              <div
-                key={index}
-                className="p-8 bg-white rounded-2xl border border-dark/10 hover:border-accent/40 transition-all duration-200"
-              >
-                <div className="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-4">
-                  <Icon size={24} className="text-accent" strokeWidth={2} />
+              <ScrollReveal key={index} delay={index * 100}>
+                <div className="p-8 bg-white rounded-2xl border border-dark/10 hover:border-accent/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-4">
+                    <Icon size={24} className="text-accent" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-dark">{layer.title}</h3>
+                  <p className="text-neutral-500 leading-relaxed">{layer.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-dark">{layer.title}</h3>
-                <p className="text-neutral-500 leading-relaxed">{layer.description}</p>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

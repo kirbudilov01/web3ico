@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 interface SectionProps {
   children: ReactNode;
@@ -13,7 +14,7 @@ export function Section({ children, className = '', id, variant = 'white' }: Sec
   return (
     <section
       id={id}
-      className={`py-16 sm:py-24 px-4 sm:px-6 lg:px-8 ${bgClass} ${className}`}
+      className={`py-10 sm:py-14 md:py-18 lg:py-24 px-4 sm:px-6 lg:px-8 ${bgClass} ${className}`}
     >
       {children}
     </section>
@@ -43,8 +44,17 @@ interface SectionTitleProps {
 }
 
 export function SectionTitle({ title, subtitle, className = '' }: SectionTitleProps) {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
-    <div className={`text-center mb-16 ${className}`}>
+    <div
+      ref={ref}
+      className={`text-center mb-16 ${className} transition-all duration-700 ease-out`}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
+      }}
+    >
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
         {title}
       </h2>
