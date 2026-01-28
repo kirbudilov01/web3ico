@@ -29,13 +29,13 @@ export default function CreatorCommentary() {
 
               <blockquote className="mb-6">
                 <p className="text-2xl font-bold text-dark leading-snug">
-                  "I'm not building this as a theory — I need it for my own products. One Mini App where people can pay in 2 taps, and partners can bring customers with automated payouts."
+                  "I'm building this for my own products first. Payments in 2 taps + partner payouts."
                 </p>
               </blockquote>
 
               <div className="pt-6 border-t border-dark/10">
                 <p className="text-sm text-neutral-500 leading-relaxed">
-                  I build digital products and growth systems. I'm the creator of Trendvi.media — a tool for creators and teams. Building FABRICBOT ECOSYSTEM started from my own need: payments that convert inside Telegram, plus a partner/referral layer that brings additional customers.
+                  Creator of Trendvi.media and growth systems. FABRICBOT started from my need: fast Telegram payments with referral layer.
                 </p>
               </div>
             </div>
