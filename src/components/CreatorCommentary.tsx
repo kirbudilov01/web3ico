@@ -1,17 +1,14 @@
 import { ExternalLink, Twitter, Send, Linkedin } from 'lucide-react';
+import { Section, Container, SectionTitle } from './ui/Layout';
 
 export default function CreatorCommentary() {
   return (
-    <section id="creator" className="px-4 sm:px-6 lg:px-8 bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-container">
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-dark">
-            Built by a founder who actually needs it
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-500 max-w-3xl">
-            I build digital products (Trendvi.media) — and FABRICBOT ECOSYSTEM is the infrastructure I wish existed.
-          </p>
-        </div>
+    <Section id="creator">
+      <Container>
+        <SectionTitle
+          title="Built by a founder who actually needs it"
+          subtitle="I build digital products (Trendvi.media) — and FABRICBOT ECOSYSTEM is the infrastructure I wish existed."
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="lg:order-1 order-2 flex flex-col gap-6">
@@ -129,7 +126,7 @@ export default function CreatorCommentary() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

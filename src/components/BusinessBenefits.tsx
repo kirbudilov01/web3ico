@@ -1,5 +1,6 @@
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import { Section, Container } from './ui/Layout';
 
 export default function BusinessBenefits() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -78,14 +79,14 @@ export default function BusinessBenefits() {
   };
 
   return (
-    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-container mx-auto">
+    <Section>
+      <Container>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-dark">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
               Turn Telegram traffic into paid users.
             </h2>
-            <p className="text-sm text-neutral-500 mb-8">
+            <p className="text-base sm:text-lg text-neutral-500 mb-8 leading-relaxed">
               Higher conversion, partner-driven growth, and automated payouts — inside one Mini App.
             </p>
             <div className="space-y-4">
@@ -182,7 +183,7 @@ export default function BusinessBenefits() {
             Open API Deck
           </a>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

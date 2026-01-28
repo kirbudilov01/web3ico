@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Section, Container, SectionTitle } from './ui/Layout';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -48,16 +49,12 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-neutral-50">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-500">
-            Everything you need to know about FABRICBOT ECOSYSTEM
-          </p>
-        </div>
+    <Section id="faq" variant="neutral">
+      <Container size="narrow">
+        <SectionTitle
+          title="Frequently Asked Questions"
+          subtitle="Everything you need to know about FABRICBOT ECOSYSTEM"
+        />
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
@@ -91,7 +88,7 @@ export default function FAQ() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

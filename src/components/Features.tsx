@@ -1,4 +1,5 @@
 import { MessageSquare, ShoppingCart, Webhook, Users, Lock, Store } from 'lucide-react';
+import { Section, Container, SectionTitle } from './ui/Layout';
 
 export default function Features() {
   const features = [
@@ -35,16 +36,12 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-neutral-50">
-      <div className="max-w-container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
-            What you unlock with FABRICBOT
-          </h2>
-          <p className="text-base sm:text-lg max-w-3xl mx-auto text-neutral-500">
-            Launch a Telegram-native commerce flow: sell, grow via referrals, and automate payouts — with payments verified on-chain.
-          </p>
-        </div>
+    <Section id="features" variant="neutral">
+      <Container>
+        <SectionTitle
+          title="What you unlock with FABRICBOT"
+          subtitle="Launch a Telegram-native commerce flow: sell, grow via referrals, and automate payouts — with payments verified on-chain."
+        />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {features.map((feature, index) => {
@@ -75,7 +72,7 @@ export default function Features() {
             <MessageSquare size={20} />
           </a>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

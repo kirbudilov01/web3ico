@@ -1,5 +1,6 @@
 import { FileText, TrendingUp, Coins, ArrowRight } from 'lucide-react';
 import type { Document } from '../App';
+import { Section, Container, SectionTitle } from './ui/Layout';
 
 interface Props {
   onDocumentClick: (doc: Document) => void;
@@ -39,16 +40,12 @@ export default function DecksDocuments({ onDocumentClick }: Props) {
   const icons = [FileText, TrendingUp, Coins];
 
   return (
-    <section id="decks" className="px-4 sm:px-6 lg:px-8 bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-container">
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-dark">
-            Key materials
-          </h2>
-          <p className="text-base sm:text-lg text-neutral-500">
-            Product, API and investor docs — in one place.
-          </p>
-        </div>
+    <Section id="decks">
+      <Container>
+        <SectionTitle
+          title="Key materials"
+          subtitle="Product, API and investor docs — in one place."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {documents.map((doc, index) => {
@@ -89,7 +86,7 @@ export default function DecksDocuments({ onDocumentClick }: Props) {
             );
           })}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

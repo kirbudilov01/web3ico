@@ -1,4 +1,5 @@
 import { Sparkles, CheckCircle2, FileText, Calendar, Send } from 'lucide-react';
+import { Section, Container } from './ui/Layout';
 
 export default function FutureToken() {
   const tiers = [
@@ -106,8 +107,8 @@ export default function FutureToken() {
   ];
 
   return (
-    <section id="prelaunch" className="px-4 sm:px-6 lg:px-8 bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-container">
+    <Section id="prelaunch">
+      <Container>
         {/* A) Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-green-600 rounded-full mb-6">
@@ -313,7 +314,7 @@ export default function FutureToken() {
           </div>
         </div>
 
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
