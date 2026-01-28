@@ -36,6 +36,15 @@ export default function DocumentModal({ document, onClose }: Props) {
     };
   }, [onClose]);
 
+  const handleDownload = () => {
+    const link = window.document.createElement('a');
+    link.href = document.downloadUrl;
+    link.download = `${document.title}.pdf`;
+    window.document.body.appendChild(link);
+    link.click();
+    window.document.body.removeChild(link);
+  };
+
   const handleOpenInNewTab = () => {
     window.open(document.url, '_blank', 'noopener,noreferrer');
   };
@@ -43,67 +52,68 @@ export default function DocumentModal({ document, onClose }: Props) {
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
       tabIndex={-1}
     >
-      <div className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-2xl border border-[#0B0F1A]/10 overflow-hidden flex flex-col shadow-2xl">
-        <div className="flex items-center justify-between p-6 border-b border-[#0B0F1A]/10 flex-shrink-0">
-          <div className="flex items-center gap-4">
-            <h3 id="modal-title" className="text-2xl font-bold text-[#0B0F1A]">{document.title}</h3>
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${
-              document.status === 'LIVE'
-                ? 'text-[#2EE59D] border-[#2EE59D]'
-                : 'text-[#6B7280] border-[#6B7280]'
-            }`}>
-              {document.status}
-            </span>
-          </div>
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl border border-[#0B0F1A]/10 overflow-hidden shadow-2xl animate-in">
+        <div className="flex items-center justify-between p-6 border-b border-[#0B0F1A]/10">
+          <h3 id="modal-title" className="text-xl font-bold text-[#0B0F1A]">Document Preview</h3>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
             aria-label="Close modal"
           >
-            <X size={24} className="text-[#6B7280]" />
+            <X size={20} className="text-[#6B7280]" />
           </button>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-12 bg-gradient-to-br from-gray-50 to-gray-100">
-          <div className="max-w-2xl w-full text-center">
-            <div className="mb-8">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg mb-6">
-                <svg className="w-12 h-12 text-[#2EE59D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <p className="text-sm text-[#6B7280] mb-2">Ready to view</p>
-              <h4 className="text-2xl font-bold text-[#0B0F1A] mb-3">{document.title}</h4>
-              <p className="text-[#6B7280] max-w-md mx-auto">{document.description}</p>
+        <div className="p-8 bg-gradient-to-br from-gray-50 to-white">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#2EE59D] to-[#26cc88] rounded-2xl shadow-lg mb-4">
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleOpenInNewTab}
-                className="px-8 py-4 bg-[#0B0F1A] text-white rounded-full font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
-              >
-                <ExternalLink size={20} />
-                Open in new tab
-              </button>
-              <a
-                href={document.downloadUrl}
-                download
-                className="px-8 py-4 bg-[#2EE59D] text-[#0B0F1A] rounded-full font-semibold hover:bg-[#26cc88] transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
-              >
-                <Download size={20} />
-                Download PDF
-              </a>
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <h4 className="text-2xl font-bold text-[#0B0F1A]">{document.title}</h4>
+              <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                document.status === 'LIVE'
+                  ? 'bg-[#2EE59D] text-[#0B0F1A]'
+                  : 'bg-gray-200 text-gray-600'
+              }`}>
+                {document.status}
+              </span>
             </div>
+
+            <p className="text-[#6B7280] text-sm max-w-md mx-auto leading-relaxed">
+              {document.description}
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <button
+              onClick={handleDownload}
+              className="w-full px-6 py-4 bg-gradient-to-r from-[#2EE59D] to-[#26cc88] text-[#0B0F1A] rounded-xl font-bold hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-3 text-lg"
+            >
+              <Download size={24} strokeWidth={2.5} />
+              Download PDF
+            </button>
+
+            <button
+              onClick={handleOpenInNewTab}
+              className="w-full px-6 py-4 bg-[#0B0F1A] text-white rounded-xl font-semibold hover:bg-[#1a1f2e] transition-all duration-200 flex items-center justify-center gap-3"
+            >
+              <ExternalLink size={20} />
+              Open in new tab
+            </button>
 
             <button
               onClick={onClose}
-              className="mt-6 text-[#6B7280] hover:text-[#0B0F1A] transition-colors duration-200 font-medium"
+              className="w-full px-6 py-3 text-[#6B7280] hover:text-[#0B0F1A] hover:bg-gray-100 rounded-xl transition-all duration-200 font-medium"
             >
               Cancel
             </button>
