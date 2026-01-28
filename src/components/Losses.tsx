@@ -23,8 +23,8 @@ export default function Losses() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="space-y-3 mb-6">
+          <div className="flex flex-col items-center">
+            <div className="space-y-3 mb-6 max-w-2xl">
               {bullets.map((bullet, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-1.5 h-1.5 bg-dark rounded-full mt-2.5"></div>
@@ -33,7 +33,7 @@ export default function Losses() {
               ))}
             </div>
 
-            <p className="text-sm text-neutral-500 italic">
+            <p className="text-sm text-neutral-500 italic max-w-2xl text-center">
               Some payment gateways exist — but they often feel like a redirect maze, not a native Telegram flow.
             </p>
           </div>
