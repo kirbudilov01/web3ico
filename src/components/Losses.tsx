@@ -13,20 +13,17 @@ export default function Losses() {
   return (
     <Section id="losses">
       <Container>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
+            Imagine how much revenue your competitors are losing.
+          </h2>
+          <p className="text-base sm:text-lg text-neutral-500 max-w-3xl mx-auto leading-relaxed">
+            They run complex referral flows, manual payouts, and clunky payment redirects — so users drop before paying. With FABRICBOT ECOSYSTEM, checkout happens inside Telegram (2 taps), referrals are instant, and payouts are automated — all in one Mini App.
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
-              Imagine how much revenue your competitors are losing.
-            </h2>
-
-            <p className="text-base sm:text-lg text-dark mb-4 leading-relaxed">
-              They run complex referral flows, manual payouts, and clunky payment redirects — so users drop before paying.
-            </p>
-
-            <p className="text-base sm:text-lg text-dark mb-8 leading-relaxed">
-              With FABRICBOT ECOSYSTEM, checkout happens inside Telegram (2 taps), referrals are instant, and payouts are automated — all in one Mini App.
-            </p>
-
             <div className="space-y-3 mb-6">
               {bullets.map((bullet, index) => (
                 <div key={index} className="flex items-start gap-3">

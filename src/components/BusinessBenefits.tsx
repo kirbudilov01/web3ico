@@ -81,14 +81,17 @@ export default function BusinessBenefits() {
   return (
     <Section>
       <Container>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
+            Turn Telegram traffic into paid users.
+          </h2>
+          <p className="text-base sm:text-lg text-neutral-500 max-w-3xl mx-auto leading-relaxed">
+            Higher conversion, partner-driven growth, and automated payouts — inside one Mini App.
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-dark">
-              Turn Telegram traffic into paid users.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-500 mb-8 leading-relaxed">
-              Higher conversion, partner-driven growth, and automated payouts — inside one Mini App.
-            </p>
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">
