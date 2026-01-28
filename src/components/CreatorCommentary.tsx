@@ -7,7 +7,7 @@ export default function CreatorCommentary() {
       <Container>
         <SectionTitle
           title="Built by a founder who actually needs it"
-          subtitle="I build digital products (Trendvi.media) — and FABRICBOT ECOSYSTEM is the infrastructure I wish existed."
+          subtitle="Created by a digital product founder as a solution for similar projects — addressing real pain points from firsthand experience."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
